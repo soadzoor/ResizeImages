@@ -4,10 +4,10 @@
 	ob_implicit_flush(true);
 	
 
-	$desiredWidth = 180;
+	$desiredWidth = 311;
 	$desiredFormat = 'jpg';
 	
-	
+	$crop = false;
 	
 	function resize_image($file, $desiredWidth, $withAlpha = false)
 	{
@@ -43,6 +43,21 @@
 		}
 		
 		imagecopyresampled($dst, $src, 0, 0, 0, 0, $w, $h, $width, $height);
+		
+		$cropDX = 6;
+		$cropDY = 4;
+		$cropWidth = $w - 2*$cropDX;
+		$cropHeight = $h - $cropDY - 27;
+		
+		if ($crop)
+		{
+			$cropDX = 6;
+			$cropDY = 4;
+			$cropWidth = $w - 2*$cropDX;
+			$cropHeight = $h - $cropDY - 27;
+			
+			$dst = imagecrop($dst, ['x' => $cropDX, 'y' => $cropDY, 'width' => $cropWidth, 'height' => $cropHeight]);
+		}
 
 		return $dst;
 	}
