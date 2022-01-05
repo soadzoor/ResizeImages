@@ -4,7 +4,7 @@
 	ob_implicit_flush(true);
 	
 
-	$desiredWidth = 311;
+	$desiredWidth = 6080;
 	$desiredFormat = 'jpg';
 	
 	$crop = false;
@@ -49,7 +49,7 @@
 		$cropWidth = $w - 2*$cropDX;
 		$cropHeight = $h - $cropDY - 27;
 		
-		if ($crop)
+		if ($GLOBALS['crop'])
 		{
 			$cropDX = 6;
 			$cropDY = 4;
